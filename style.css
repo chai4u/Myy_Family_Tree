@@ -1,0 +1,113 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Spartan",sans-serif;
+
+}
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-top: 0.4em;
+    margin-bottom: 0.1em;
+    margin-left: 0;
+    margin-right: 0;
+    color:antiquewhite;
+}
+h2 {
+    display: block;
+font-size: 1.5em;
+margin-top: 0em;
+margin-bottom: 0.1em;
+margin-left: 0;
+margin-right: 0;
+color:antiquewhite;
+}
+h3 {
+    display: block;
+    font-size: 1em;
+    margin-top: 0em;
+    margin-bottom: 3em;
+    margin-left: 0;
+    margin-right: 0;
+    color:antiquewhite;
+}
+
+button.normal{
+    font-size:14px;
+    font-weight:600;
+    padding:15px 30px;
+    color:#000;
+    background-color:#f2720f ;
+    border-radius: 4px;
+    cursor:pointer;
+    border: none;
+    outline: none;
+    transition:0.2s;
+
+}
+body{
+    width:100%;
+}
+.section-p1{
+    padding:40px 80px;
+}
+.section-m1{
+    margin:40px 0;
+}
+#header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 20px;
+    background:#607244;
+    box-shadow: 0 5px 15px rgba(3, 2, 20, 0.83);
+    position:sticky;
+    top:0;
+    left:0;
+}
+#navbar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+#navbar li{
+    list-style: none;
+    padding: 0 20px;
+    position:relative;
+}
+#navbar li a{
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(0, 0, 9, 0.667);
+    transition: 0.2s ease;
+}
+#navbar li a:hover,
+#navbar li a.active {
+    color: rgb(255, 255, 255);
+}
+#navbar li a.active::after,
+#navbar li a:hover::after{
+    content:"";
+    width:30%;
+    height: 2px;
+    background:rgb(255, 255, 255);
+    position:absolute;
+    bottom: -4px;
+    left: 20px; 
+}
+/*HOME PAGE*/
+#hero{
+    background-image: url("Images/Family .jpeg");
+    height: 90vh;
+    width:100%;
+    background-size:cover;
+    background-position:top 25% right 0;
+    padding:400px 80px;
+}
+
+ 
+
+

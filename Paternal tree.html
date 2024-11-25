@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Tree</title>
+    <style>
+        body {
+            background-color: #2d2d2d;
+            color: white;
+            font-family: Arial, sans-serif;
+        }  
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://shrihari-lib.netlify.app/lineage.min.js"></script>
+</head>
+<body>
+    <div id="divFamily"></div>
+    <script>
+         var jsonData = [
+            { "id": 1, "pid": 2, "gender": "male", "title": "Kilari ", "name": "Thotayya", "photo": "Images/Thotayya.jpeg", "addr": "RIP" },
+            { "id": 2, "pid": 1, "gender": "female", "title": "Kilari ", "name": "Appalanarasamma", "photo": "Images/Nannamma.jpeg", "addr": "" },
+            { "id": 3, "pid": 4, "mid": 2, "fid": 1, "gender": "male", "title": "Uncle", "name": "Apparao", "photo": "Images/Apparao.jpeg", "addr": "", "cn":"" },
+            { "id": 4, "pid": 3, "gender": "female", "title": "Kilari ", "name": "Lakshmi", "photo": "Images/pedamma.jpeg", "addr": "", "cn":"" },
+            { "id": 5, "mid": 2, "fid": 1, "gender": "male", "title": "Kilari ", "name": "Kilari", "photo": "", "addr": "RIP", "cn":"" },
+            { "id": 6, "mid": 2, "fid": 1, "gender": "male", "title": "Kilari ", "name": "Kilari", "photo": "", "addr": "RIP", "cn":"" },
+            { "id": 7, "pid": 8, "mid": 2, "fid": 1, "gender": "female", "title": "Nakka ", "name": "Acchiyamma", "photo": "Images/Acchi Atha.jpeg", "addr": "", "cn":"" },
+            { "id": 8, "pid": 7, "gender": "male", "title": "Nakka", "name": " Nookaraju", "photo": "", "addr": "", "cn":"" },
+            { "id": 9, "pid": 10, "mid": 2, "fid": 1, "gender": "female", "title": "Palla ", "name": "Sankaramma", "photo": "Images/sankaratha.jpeg", "addr": "", "cn":"" },
+            { "id": 10, "pid": 9, "gender": "male", "title": "Palla", "name": " Appalaraju", "photo": "", "addr": "", "cn":"" },
+            { "id": 11, "pid": 12, "mid": 2, "fid": 1, "gender": "female", "title": "Nakka ", "name": "Bangaramma", "photo": "Images/bangaratha.jpeg", "addr": "", "cn":"" },
+            { "id": 12, "pid": 13, "gender": "male", "title": "Nakka ", "name": "Thatharao", "photo": "", "addr": "", "cn":"" },
+            { "id": 13, "pid": 14, "mid": 2, "fid": 1, "gender": "male", "title": "Kilari ", "name": "Srinubabu", "photo": "Images/daddy.jpeg", "addr": "", "cn":"" },
+            { "id": 14, "pid": 13, "gender": "female", "title": "Kilari ", "name": "UmaDevi", "photo": "Images/Amma.jpeg", "addr": "", "cn":"" },
+            { "id": 15, "pid": 16, "mid": 2, "fid": 1, "gender": "female", "title": "Chinni ", "name": "Lakshmi", "photo": "Images/chinnatha.jpeg", "addr": "Vijayawada", "cn":"" },
+            { "id": 16, "pid": 15, "gender": "male", "title": "Chinni ", "name": "Appalaraju", "photo": "Images/vjwuncle.jpeg", "addr": "Vijayawada", "cn":"" },
+            { "id": 17, "pid": 18, "mid": 4, "fid": 3, "gender": "male", "title": "Cousin", "name": "Naveen", "photo": "Images/naveen.jpeg", "addr": "", "cn":"" },
+            { "id": 18, "pid": 17, "gender": "female", "title": "Cousin's Wife", "name": " Nandini", "photo": "", "addr": "", "cn":"" },
+            { "id": 19, "pid": 20, "mid": 7, "fid": 8, "gender": "male", "title": "Cousin", "name": " Ashok", "photo": "Images/rajbava.jpeg", "addr": "", "cn":"" },
+            { "id": 20, "pid": 19, "gender": "female", "title": "Cousin's Wife", "name": "Leela", "photo": "Images/leelakka.jpeg", "addr": "", "cn":"" },
+            { "id": 21, "pid": 22, "mid": 7, "fid": 8, "gender": "female", "title": "Cousin", "name": "Anusha", "photo": "Images/anakka.jpeg", "addr": "", "cn":"" },
+            { "id": 22, "pid": 21, "gender": "male", "title": "Cousin's Husband", "name": "ChandraSekhar", "photo": "", "addr": "", "cn":"" },
+            { "id": 23, "mid": 9, "fid": 10, "gender": "female", "title": "Cousin", "name": "Madhavi", "photo": "Images/madhakka.jpeg", "addr": "", "cn":"" },
+            { "id": 24, "pid": 25, "mid": 9, "fid": 10, "gender": "female", "title": "Pamu ", "name": "Pavani", "photo": "Images/pavanakka.jpeg", "addr": "Cousin", "cn":"" },
+            { "id": 25, "pid": 24, "gender": "male", "title": "Pamu ", "name": "Raghav", "photo": "Images/raghav.jpeg", "addr": "Cousin's Husband", "cn":"" },
+            { "id": 26, "mid": 9, "fid": 10, "gender": "male", "title": "Cousin", "name": "Kalyan", "photo": "Images/kalyan.jpeg", "addr": "", "cn":"" },
+            { "id": 27, "mid": 11, "fid": 12, "gender": "male", "title": "Cousin", "name": "Venkat Sai", "photo": "Images/sai.jpeg", "addr": "", "cn":"" },
+            { "id": 28, "pid": 29, "mid": 11, "fid": 12, "gender": "female", "title": "Cousin", "name": "Hema Sravya", "photo": "Images/sravya.jpeg", "addr": "", "cn":"" },
+            { "id": 29, "pid": 28, "gender": "male", "title": "Cousin's Husband", "name": "Ganesh", "photo": "", "addr": "", "cn":"" },
+            { "id": 30, "mid": 14, "fid": 13, "gender": "male", "title": "ME :)", "name": " Chaitanya", "photo": "Images/me.jpeg", "addr": "", "cn":"" },
+            { "id": 31, "mid": 14, "fid": 13, "gender": "female", "title": "Sister", "name": " Gowthami", "photo": "Images/chelli.jpeg", "addr": "", "cn":"" },
+            { "id": 32, "mid": 15, "fid": 16, "gender": "male", "title": "Cousin", "name": " Aravindh", "photo": "Images/ara.jpeg", "addr": "", "cn":"" },
+            { "id": 33, "mid": 15, "fid": 16, "gender": "male", "title": "Cousin", "name": " Bhanu Prakash", "photo": "Images/bhanu.jpeg", "addr": "", "cn":"" },
+            { "id": 34, "mid": 20, "fid": 19, "gender": "female", "title": "", "name": "Thanishka", "photo": "", "addr": "", "cn":"" },
+            { "id": 35, "mid": 24, "fid": 25, "gender": "male", "title": "Boy", "name": "Mohith", "photo": "Images/mohit.jpeg", "addr": "", "cn":"" },
+            { "id": 36, "mid": 7, "fid": 8, "gender": "male", "title": "Pet", "name": "Babloo", "photo": "", "addr": "", "cn":"" },
+            { "id": 37, "mid": 9, "fid": 10, "gender": "male", "title": "Pet", "name": "Milky", "photo": "", "addr": "", "cn":"" },
+            { "id": 38, "mid": 14, "fid": 13, "gender": "male", "title": "Pet", "name": "Tommy", "photo": "Images/tommy.jpeg", "addr": "", "cn":"" },
+            { "id": 39, "mid": 14, "fid": 13, "gender": "male", "title": "Pet", "name": "Anasuya", "photo": "Images/aavu.jpeg", "addr": "", "cn":"" },
+            { "id": 40, "mid": 11, "fid": 12, "gender": "male", "title": "Pet", "name": "Milky", "photo": "", "addr": "", "cn":"" },
+            { "id": 41, "mid": 15, "fid": 16, "gender": "male", "title": "Pet", "name": "Pandu", "photo": "Images/pandu.jpeg", "addr": "", "cn":"" },
+            { "id": 42, "mid": 21, "fid": 22, "gender": "female", "title": "Girl", "name": "Manasa", "photo": "Images/mammu.jpeg", "addr": "", "cn":"" },
+            { "id": 43, "mid": 21, "fid": 22, "gender": "male", "title": "Boy", "name": "Hemu", "photo": "Images/hemu.jpeg", "addr": "", "cn":"" },
+
+        ];
+        var params = {
+            data: jsonData, /*Local variable or file path*/
+            search: true, //false
+            container: "divFamily",
+            template: "circle" // "rounded" // "raised" // "tilted"
+        };
+        var tree = new Lineage(params);
+        tree.load();
+    </script>
+   
+</body>
+</html>
